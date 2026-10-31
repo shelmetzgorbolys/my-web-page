@@ -12,7 +12,6 @@ defineProps<{ text: string; tag?: string }>()
   display: inline-block;
 }
 
-/* Две копии текста, нарезанные полосами и смещённые в стороны */
 .glitch::before,
 .glitch::after {
   content: attr(data-text);

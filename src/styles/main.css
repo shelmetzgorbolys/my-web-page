@@ -7,13 +7,11 @@
 @import '@fontsource/handjet/cyrillic-700.css';
 @import '@fontsource/handjet/latin-700.css';
 
-/* 1-bit палитра: только два цвета, полутона — через дизеринг */
 :root {
   --font-pixel: 'Press Start 2P', monospace;
   --font-body: 'Handjet', monospace;
   --status-height: 40px;
 
-  /* Пиксельный курсор: обычный и для ссылок (инвертированный) */
   --cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='38' viewBox='0 0 12 19' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v2H7v1h1v2h1v2H8v1H6v-1H5v-2H4v-1H3v1H2v1H1v1H0z' fill='%23fff'/%3E%3Cpath d='M1 2h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1H6v1h1v2h1v2H7v-2H6v-2H5v-1H4v1H3v1H2v1H1z' fill='%23111'/%3E%3C/svg%3E") 0 0, auto;
   --cursor-pointer: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='38' viewBox='0 0 12 19' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v2H7v1h1v2h1v2H8v1H6v-1H5v-2H4v-1H3v1H2v1H1v1H0z' fill='%23111'/%3E%3Cpath d='M1 2h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1H6v1h1v2h1v2H7v-2H6v-2H5v-1H4v1H3v1H2v1H1z' fill='%23fff'/%3E%3C/svg%3E") 0 0, pointer;
 
@@ -64,7 +62,6 @@ button,
   cursor: var(--cursor-pointer);
 }
 
-/* Фон закреплён и не двигается при прокрутке: сетка точек + виньетка */
 body::before {
   content: '';
   position: fixed;
@@ -76,7 +73,6 @@ body::before {
     radial-gradient(var(--shade) 1px, transparent 1px) 0 0 / 8px 8px;
 }
 
-/* Лёгкие ЭЛТ-сканлайны поверх страницы */
 body::after {
   content: '';
   position: fixed;
@@ -112,14 +108,12 @@ a {
   padding-inline: 24px;
 }
 
-/* Шахматный дизеринг 50% */
 .dither {
   background-color: var(--bg);
   background-image: repeating-conic-gradient(var(--fg) 0 25%, transparent 0 50%);
   background-size: 4px 4px;
 }
 
-/* Окно в стиле старой ОС */
 .window {
   border: 4px solid var(--fg);
   background: var(--bg);
@@ -168,8 +162,6 @@ a {
   background: var(--fg);
 }
 
-/* Появление при прокрутке — «развёртка» сверху вниз, ступенчато.
-   Обрезаем детей, а не саму секцию: IntersectionObserver учитывает clip-path цели */
 .reveal > * {
   clip-path: inset(-20px -20px 100% -20px);
   transition: clip-path 0.6s steps(8);
@@ -183,7 +175,6 @@ a {
   transition-delay: 0.15s;
 }
 
-/* Глитч-всплеск всей страницы (Konami-код, команда glitch) */
 .is-glitching main,
 .is-glitching .header {
   animation: page-shake 0.18s steps(3) infinite;

@@ -36,7 +36,6 @@ const step = () => {
   }
 }
 
-// Клавиша только пропускает загрузку и не должна прокручивать страницу
 const onKey = (event: KeyboardEvent) => {
   event.preventDefault()
   finish()

@@ -1,6 +1,5 @@
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 
-/** Активный раздел и прогресс прокрутки страницы (0–1) */
 export function useScrollSpy(ids: string[]) {
   const active = ref(ids[0] ?? '')
   const progress = ref(0)
@@ -18,7 +17,6 @@ export function useScrollSpy(ids: string[]) {
       const el = document.getElementById(id)
       if (el && el.getBoundingClientRect().top <= line) current = id
     }
-    // В самом низу страницы активен последний раздел
     if (progress.value > 0.995) current = ids[ids.length - 1] ?? current
     active.value = current
   }

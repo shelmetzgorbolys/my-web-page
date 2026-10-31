@@ -4,7 +4,6 @@ import { prefersReducedMotion } from './useFx'
 const GLYPHS = '█▓▒░<>/\\|=+*#%@$&01АБВГДЖЗЛФЦШЯ'
 const randomGlyph = () => GLYPHS[Math.floor(Math.random() * GLYPHS.length)]
 
-// Текст «расшифровывается» слева направо из случайных символов
 export function scramble(el: HTMLElement, text: string, duration = 650): void {
   if (prefersReducedMotion()) {
     el.textContent = text
@@ -44,7 +43,6 @@ const onHover = (event: Event) => {
   scramble(el, el.dataset.text ?? '', 400)
 }
 
-/** v-scramble="'Текст'" — расшифровка при появлении в зоне видимости и при наведении */
 export const vScramble: Directive<HTMLElement, string> = {
   mounted(el, { value }) {
     el.dataset.text = value

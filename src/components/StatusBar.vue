@@ -17,7 +17,6 @@ const tickClock = () => {
   time.value = new Date().toLocaleTimeString('ru-RU')
 }
 
-// Счётчик кадров: считаем кадры за секунду через requestAnimationFrame
 const measure = (now: number) => {
   frames++
   if (now - since >= 1000) {

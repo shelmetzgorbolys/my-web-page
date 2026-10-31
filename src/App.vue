@@ -24,7 +24,6 @@ const SECTIONS = {
   terminal: 'Терминал',
 } as const
 
-// Экран загрузки показываем один раз за сессию
 const BOOT_KEY = 'booted'
 const booted = ref(prefersReducedMotion() || sessionStorage.getItem(BOOT_KEY) === '1')
 const onBooted = () => {
@@ -146,7 +145,6 @@ useKonami(() => {
   color: var(--muted);
 }
 
-/* Стек */
 .stack {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -176,7 +174,6 @@ useKonami(() => {
   animation: jitter 0.2s steps(2);
 }
 
-/* Достижения */
 .cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -204,7 +201,6 @@ useKonami(() => {
   66% { filter: none; transform: translateX(3px); }
 }
 
-/* Терминал */
 .terminal-intro {
   max-width: 720px;
   margin: 0 0 24px;
@@ -239,7 +235,6 @@ kbd {
   color: var(--muted);
 }
 
-/* О себе */
 .about {
   max-width: 760px;
   padding-left: 20px;
@@ -262,7 +257,6 @@ kbd {
   margin-bottom: 0;
 }
 
-/* Образование */
 .edu {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -314,7 +308,6 @@ kbd {
   color: var(--muted);
 }
 
-/* Футер */
 .footer {
   margin-top: 32px;
 }

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-// Иконка задаётся строками: '#' — закрашенный пиксель, '.' — пустой
 const props = defineProps<{ rows: string[] }>()
 
 const pixels = computed(() =>

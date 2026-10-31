@@ -1,6 +1,5 @@
 import type { Directive } from 'vue'
 
-// Плавное появление элементов при прокрутке
 const observer =
   typeof IntersectionObserver !== 'undefined'
     ? new IntersectionObserver(

@@ -84,7 +84,6 @@ const run = (cmd: string) => {
   inputEl.value?.focus({ preventScroll: true })
 }
 
-// Глобальные горячие клавиши: Ctrl/⌘+K или «/» — открыть терминал
 const onGlobalKey = (event: KeyboardEvent) => {
   const target = event.target as HTMLElement | null
   const typing = target?.closest('input, textarea, [contenteditable="true"]')

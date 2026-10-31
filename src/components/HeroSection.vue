@@ -104,7 +104,6 @@ const { output, done } = useTypewriter(roleLine, toRef(props, 'started'))
   line-height: 1.3;
 }
 
-/* Невидимая копия держит место, чтобы вёрстка не прыгала во время печати */
 .hero__ghost,
 .hero__typed {
   grid-area: 1 / 1;

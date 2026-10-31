@@ -9,7 +9,6 @@ watch(theme, (value) => {
   try {
     localStorage.setItem('theme', value)
   } catch {
-    // localStorage может быть недоступен (приватный режим) — тема просто не сохранится
   }
 })
 

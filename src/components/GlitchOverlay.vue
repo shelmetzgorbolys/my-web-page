@@ -27,7 +27,6 @@ const spawn = (count: number) => {
   window.setTimeout(() => (bands.value = []), 90 + Math.random() * 90)
 }
 
-// Редкие случайные помехи в спокойном режиме
 const scheduleIdle = () => {
   idleTimer = window.setTimeout(() => {
     if (!document.hidden) spawn(1 + Math.floor(Math.random() * 3))
@@ -35,7 +34,6 @@ const scheduleIdle = () => {
   }, 3500 + Math.random() * 6000)
 }
 
-// Во время всплеска — частые помехи
 watch(glitchActive, (active) => {
   clearInterval(burstTimer)
   document.documentElement.classList.toggle('is-glitching', active)

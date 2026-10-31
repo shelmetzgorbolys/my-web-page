@@ -1,7 +1,5 @@
 import { ref } from 'vue'
 
-// Общие визуальные эффекты: глитч-всплески и системные уведомления в статус-баре
-
 export const prefersReducedMotion = () =>
   typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches
 

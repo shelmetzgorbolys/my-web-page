@@ -1,7 +1,6 @@
 import { onBeforeUnmount, ref, watch, type Ref } from 'vue'
 import { prefersReducedMotion } from './useFx'
 
-/** Печатает текст посимвольно, когда start становится true */
 export function useTypewriter(text: string, start: Ref<boolean>, speed = 32) {
   const output = ref('')
   const done = ref(false)

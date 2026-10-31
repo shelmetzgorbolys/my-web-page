@@ -5,7 +5,6 @@ const SEQUENCE = [
   'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA',
 ]
 
-/** Пасхалка: ↑ ↑ ↓ ↓ ← → ← → B A */
 export function useKonami(callback: () => void) {
   let position = 0
 
