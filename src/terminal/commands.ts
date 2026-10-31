@@ -20,8 +20,6 @@ export interface Command {
   run: (ctx: TerminalContext) => OutputLine[] | void
 }
 
-export const SOURCE_URL = 'https://github.com/shelmetzgorbolys/my-web-page'
-
 const line = (text: string, extra: Omit<OutputLine, 'text'> = {}): OutputLine => ({ text, ...extra })
 
 export const commands: Record<string, Command> = {
@@ -60,10 +58,6 @@ export const commands: Record<string, Command> = {
   contacts: {
     description: 'как связаться',
     run: () => resume.contacts.map((c) => line(`${c.label}: ${c.value}`, { href: c.href })),
-  },
-  source: {
-    description: 'исходный код сайта',
-    run: () => [line(SOURCE_URL, { href: SOURCE_URL })],
   },
   theme: {
     description: 'сменить тему',

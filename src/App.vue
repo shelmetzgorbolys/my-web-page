@@ -11,7 +11,6 @@ import { prefersReducedMotion, useFx } from './composables/useFx'
 import { useKonami } from './composables/useKonami'
 import { useScrollSpy } from './composables/useScrollSpy'
 import { resume } from './data/resume'
-import { SOURCE_URL } from './terminal/commands'
 
 const year = new Date().getFullYear()
 
@@ -127,7 +126,6 @@ useKonami(() => {
     <div class="footer__band dither" aria-hidden="true" />
     <div class="container footer__inner">
       <p>© {{ year }} {{ resume.name }} · Vue 3 + TypeScript + Vite</p>
-      <a :href="SOURCE_URL" target="_blank" rel="noopener noreferrer">&lt;исходный код /&gt;</a>
     </div>
   </footer>
 
