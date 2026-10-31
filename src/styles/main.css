@@ -1,0 +1,232 @@
+@import '@fontsource/press-start-2p/cyrillic-400.css';
+@import '@fontsource/press-start-2p/latin-400.css';
+@import '@fontsource/handjet/cyrillic-400.css';
+@import '@fontsource/handjet/latin-400.css';
+@import '@fontsource/handjet/cyrillic-500.css';
+@import '@fontsource/handjet/latin-500.css';
+@import '@fontsource/handjet/cyrillic-700.css';
+@import '@fontsource/handjet/latin-700.css';
+
+/* 1-bit палитра: только два цвета, полутона — через дизеринг */
+:root {
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-body: 'Handjet', monospace;
+  --status-height: 40px;
+
+  /* Пиксельный курсор: обычный и для ссылок (инвертированный) */
+  --cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='38' viewBox='0 0 12 19' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v2H7v1h1v2h1v2H8v1H6v-1H5v-2H4v-1H3v1H2v1H1v1H0z' fill='%23fff'/%3E%3Cpath d='M1 2h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1H6v1h1v2h1v2H7v-2H6v-2H5v-1H4v1H3v1H2v1H1z' fill='%23111'/%3E%3C/svg%3E") 0 0, auto;
+  --cursor-pointer: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='38' viewBox='0 0 12 19' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v2H7v1h1v2h1v2H8v1H6v-1H5v-2H4v-1H3v1H2v1H1v1H0z' fill='%23111'/%3E%3Cpath d='M1 2h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1H6v1h1v2h1v2H7v-2H6v-2H5v-1H4v1H3v1H2v1H1z' fill='%23fff'/%3E%3C/svg%3E") 0 0, pointer;
+
+  --bg: #ecebe4;
+  --fg: #111111;
+  --muted: color-mix(in srgb, var(--fg) 70%, var(--bg));
+  --shade: color-mix(in srgb, var(--fg) 22%, var(--bg));
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0d0d0d;
+  --fg: #e6e4da;
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding-bottom: var(--status-height);
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--fg);
+  background-color: var(--bg);
+  cursor: var(--cursor);
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+
+a,
+button,
+[role='button'] {
+  cursor: var(--cursor-pointer);
+}
+
+/* Фон закреплён и не двигается при прокрутке: сетка точек + виньетка */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, transparent 55%, color-mix(in srgb, var(--fg) 10%, transparent) 100%),
+    radial-gradient(var(--shade) 1px, transparent 1px) 0 0 / 8px 8px;
+}
+
+/* Лёгкие ЭЛТ-сканлайны поверх страницы */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 2px,
+    color-mix(in srgb, var(--fg) 5%, transparent) 2px 3px
+  );
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+:focus-visible {
+  outline: 3px dashed var(--fg);
+  outline-offset: 4px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1040px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+/* Шахматный дизеринг 50% */
+.dither {
+  background-color: var(--bg);
+  background-image: repeating-conic-gradient(var(--fg) 0 25%, transparent 0 50%);
+  background-size: 4px 4px;
+}
+
+/* Окно в стиле старой ОС */
+.window {
+  border: 4px solid var(--fg);
+  background: var(--bg);
+  box-shadow: 6px 6px 0 var(--fg);
+}
+
+.window__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 8px;
+  border-bottom: 4px solid var(--fg);
+  background-color: var(--bg);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--fg) 0 2px,
+    transparent 2px 4px
+  );
+}
+
+.window__title {
+  padding: 2px 8px;
+  background: var(--bg);
+  font-family: var(--font-pixel);
+  font-size: 0.6rem;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.window__buttons {
+  display: flex;
+  gap: 6px;
+  padding: 2px 4px;
+  background: var(--bg);
+}
+
+.window__buttons i {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--fg);
+}
+
+.window__buttons i:last-child {
+  background: var(--fg);
+}
+
+/* Появление при прокрутке — «развёртка» сверху вниз, ступенчато.
+   Обрезаем детей, а не саму секцию: IntersectionObserver учитывает clip-path цели */
+.reveal > * {
+  clip-path: inset(-20px -20px 100% -20px);
+  transition: clip-path 0.6s steps(8);
+}
+
+.reveal.is-visible > * {
+  clip-path: inset(-20px -20px -20px -20px);
+}
+
+.reveal.is-visible > :nth-child(2) {
+  transition-delay: 0.15s;
+}
+
+/* Глитч-всплеск всей страницы (Konami-код, команда glitch) */
+.is-glitching main,
+.is-glitching .header {
+  animation: page-shake 0.18s steps(3) infinite;
+}
+
+.is-glitching body::after {
+  animation: scan-roll 0.25s steps(4) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes jitter {
+  33% { transform: translate(-2px, 1px); }
+  66% { transform: translate(2px, -1px); }
+}
+
+@keyframes page-shake {
+  0% { transform: translate(0); filter: none; }
+  33% { transform: translate(-6px, 2px); filter: invert(1); }
+  66% { transform: translate(5px, -2px); filter: none; }
+}
+
+@keyframes scan-roll {
+  to { background-position: 0 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .reveal > * {
+    clip-path: none;
+  }
+}
